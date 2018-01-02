@@ -1,0 +1,20 @@
+{
+  "name": "pagode-shotterkas-gpio",
+  "version": "1.0.0",
+  "description": "mqtt with gpio",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "gpio",
+    "node",
+    "mqtt"
+  ],
+  "author": "DennisVanBets",
+  "license": "ISC",
+  "dependencies": {
+    "mqtt": "^2.15.0",
+    "rpi-gpio": "^0.9.1"
+  }
+}
