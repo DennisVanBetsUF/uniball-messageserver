@@ -1,25 +1,21 @@
 var gpio = require('rpi-gpio');
+var io = require('socnpmket.io');
 
-var mqtt = require('mqtt')
-var client  = mqtt.connect('mqtt://localhost:1883');
+var socket = io('http://localhost:9001');
 
 var pinRead = false;
 
-console.log('running'); 
-client.on('connect', function () {
-  console.log('connected');
-  client.publish('presence', 'Hello mqtt')
-})
+console.log('running');
  
 gpio.on('change', function(channel, value) {
     if (!pinRead) {
         console.log('Channel ' + channel + ' value is now ' + value);
         if(channel == 11 && value == false) {
-            client.publish('score', 'red');
+            socket.emit('score', {team: 'red'});
             console.log('pub score red');
         }
         if(channel == 13 && value == false) {
-             client.publish('score', 'green');
+             socket.emit('score', {team: 'green'});
              console.log('pub score green');
         }
      pinRead = true;
